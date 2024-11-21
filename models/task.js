@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/TODO_task");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const Mongo_uri = process.env.Mongo_URL;
+mongoose.connect(Mongo_uri);
 
 const taskSchema = new mongoose.Schema({
   task: String,
