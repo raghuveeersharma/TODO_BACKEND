@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post("/task", (req, res) => {
+app.post("/tasks", (req, res) => {
   // take the tasks front end save to db
   const { task } = req.body;
   const newTask = new Task({ task }); // create new task
@@ -34,7 +34,7 @@ app.get("/tasks", async (req, res) => {
   console.log(` data send`);
 });
 
-app.delete("/task/:id", async (req, res) => {
+app.delete("/tasks/:id", async (req, res) => {
   // delete task
   const taskId = req.params.id;
   await Task.findByIdAndDelete(taskId) // db interaction to delete
@@ -47,7 +47,7 @@ app.delete("/task/:id", async (req, res) => {
     });
 });
 
-app.put("/task/:id", async (req, res) => {
+app.put("/tasks/:id", async (req, res) => {
   // update task
   const taskId = req.params.id;
   const { task } = req.body;
