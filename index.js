@@ -6,6 +6,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+dotenv.config(); // load env variables
 
 app.post("/tasks", (req, res) => {
   // take the tasks front end save to db
@@ -61,7 +62,9 @@ app.put("/tasks/:id", async (req, res) => {
     });
 });
 
-app.listen(process.env.PORT, () => {
+P = process.env.PORT || 5000; // port number
+
+app.listen(P, () => {
   // server listen
-  console.log("Server is running on port 5000");
+  console.log(`Server is running on port ${process.env.PORT}`);
 });

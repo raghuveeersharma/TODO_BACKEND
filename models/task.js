@@ -3,7 +3,9 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const Mongo_uri = process.env.Mongo_ATLAS_URL || process.env.MONGO_URI;
-mongoose.connect(Mongo_uri);
+mongoose.connect(Mongo_uri).then(() => {
+  console.log("connected to db");
+});
 
 const taskSchema = new mongoose.Schema({
   task: String,
